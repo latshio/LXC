@@ -40,6 +40,8 @@ docker run --rm -it hello-world
 =========================================
 TAILSCALE INSTALL
 =========================================
+https://www.youtube.com/watch?v=QJzjJozAYJo
+
 Firest turn of the lxc 
 then from node shell do the following 
 nano nano /etc/pve/lxc/(1000).conf    (put lxc CTID that you want instal tailscail)

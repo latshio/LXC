@@ -1,1 +1,63 @@
+Create New LXC
+
+frist to get templates
+commands
+(from node shell) pveam available
+pveam download me ubuntu-25.04-standard_25.04-1.1_amd64.tar.zst
+
+then create lxc
+-General
+ctid (number that you want)
+hostname (shose what you want )
+password (shose what you want )
+confirm password
+-template
+storge ()
+template ()
+-Desks
+-CPU
+-Memory
+-Network (frist DHCP then get the working IP and make it Static)
+-DNS (leave it  or put the your working DNS Manually) 
+-Confirm 
+-Statrt it 
+=======================================
+After runnig 
+enable ssh by following command 
+nano /etc/ssh/sshd_config 
+edit to make (PermitRootLogin  yes) then ctrl+s to save  ctrl+x to exit 
+updating (apt update  then apt upgrade )
+
+========================================
+DOCKER INSTALL
+========================================
+apt install curl
+
+curl -fsSL https://get.docker.com | sh
+
+test installation 
+docker run --rm -it hello-world 
+=========================================
+TAILSCALE INSTALL
+=========================================
+Firest turn of the lxc 
+then from node shell do the following 
+nano nano /etc/pve/lxc/(1000).conf    (put lxc CTID that you want instal tailscail)
+
+add the following 2 lines to the file and save and exit
+
+lxc.cgroup2.devices.allow: c 10:200 rwm
+lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
+
+Second 
+curl -fsSL https://tailscale.com/install.sh | sh
+=========================================
+then wayes to start it 
+
+tailscale up
+tailscale up --advertise-routes=0.0.0.0/24 --advertise-exit-node --ssh
+then take the tailscale url and activate it 
+=========================================
+
+
 
